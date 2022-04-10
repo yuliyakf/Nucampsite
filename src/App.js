@@ -4,6 +4,7 @@ import Directory from './components/DirectoryComponent';
 import './App.css';
 import { CAMPSITES } from './shared/campsites';
 
+
 class App extends Component {
     constructor(props) {
         super(props);
@@ -22,6 +23,7 @@ class App extends Component {
                 </div>
                 </Navbar>
                 <Directory campsites={this.state.campsites} />
+                
             </div>
         );
     }
