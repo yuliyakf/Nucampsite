@@ -4,14 +4,16 @@ import {
    Button, Label, Col, Row
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { Control, LocalForm, Errors } from 'react-redux-form';
+import { Control, Form, Errors } from 'react-redux-form';
 
 const required = val => val && val.length;
 const maxLength = len => val => !val || (val.length <= len);
 const minLength = len => val => val && (val.length >= len);
 const isNumber = val => !isNaN(+val);
 const validEmail = val => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
+
 class Contact extends Component {
+
    constructor(props) {
       super(props);
 
@@ -31,16 +33,17 @@ class Contact extends Component {
          }
       };
 
-
       this.handleSubmit = this.handleSubmit.bind(this);
    }
 
-
    handleSubmit(values) {
-      console.log("Current state is: " + JSON.stringify(values));
-      alert("Current state is: " + JSON.stringify(values));
-   }
+      console.log('Current State is: ' + JSON.stringify(values));
+      alert('Current State is: ' + JSON.stringify(values));
+      this.props.resetFeedbackForm();
+  }
+
    render() {
+
       return (
          <div className="container">
             <div className="row">
@@ -68,13 +71,14 @@ class Contact extends Component {
                   <a role="button" className="btn btn-link" href="mailto:fakeemail@fakeemail.co"><i className="fa fa-envelope-o" /> campsites@nucamp.co</a>
                </div>
             </div>
+
             <div className="row row-content">
                <div className="col-12">
                   <h2>Send us your Feedback</h2>
                   <hr />
                </div>
                <div className="col-md-10">
-                  <LocalForm onSubmit={values => this.handleSubmit(values)}>
+               <Form model="feedbackForm" onSubmit={values => this.handleSubmit(values)}>  
                      <Row className="form-group">
                         <Label htmlFor="firstName" md={2}>First Name</Label>
                         <Col md={10}>
@@ -212,11 +216,12 @@ class Contact extends Component {
                            </Button>
                         </Col>
                      </Row>
-                  </LocalForm>
+                  </Form>
                </div>
             </div>
          </div>
       );
    }
 }
+
 export default Contact;

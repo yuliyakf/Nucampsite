@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-   Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron,
+   Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron,
    Button, Modal, ModalHeader, ModalBody,
    Form, FormGroup, Input, Label
 } from 'reactstrap';
@@ -15,6 +15,7 @@ class Header extends Component {
          isNavOpen: false,
          isModalOpen: false
       };
+
       this.toggleNav = this.toggleNav.bind(this);
       this.toggleModal = this.toggleModal.bind(this);
       this.handleLogin = this.handleLogin.bind(this);
@@ -36,7 +37,7 @@ class Header extends Component {
       alert(`Username: ${this.username.value} Password: ${this.password.value} Remember: ${this.remember.checked}`);
       this.toggleModal();
       event.preventDefault();
-  }
+   }
 
    render() {
       return (
@@ -84,7 +85,6 @@ class Header extends Component {
                            <i className="fa fa-sign-in fa-lg" /> Login
                         </Button>
                      </span>
-
                   </Collapse>
                </div>
             </Navbar>
@@ -114,6 +114,7 @@ class Header extends Component {
                   </Form>
                </ModalBody>
             </Modal>
+
          </React.Fragment>
       );
    }
